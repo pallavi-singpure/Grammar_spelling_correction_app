@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.background-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 40%),
+              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15), transparent 40%);
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  width: 80%;
+  max-width: 850px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.app-title {
+  text-align: center;
+  color: #5c33f6;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  animation: fadeDown 1s ease;
+}
+
+textarea {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  padding: 12px;
+  font-size: 1rem;
+  resize: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #5c33f6;
+  box-shadow: 0 0 10px rgba(92, 51, 246, 0.3);
+}
+
+.btn {
+  background: linear-gradient(90deg, #5c33f6, #a86cf5);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #6f4ff5, #b07df5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(92, 51, 246, 0.3);
+}
+
+.card {
+  background: #fff;
+  border-left: 6px solid #5c33f6;
+  padding: 20px;
+  margin-top: 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.result-box {
+  background-color: #f5f3ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #5c33f6;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #704bf9;
+  transform: scale(1.05);
+}
+
+.mistake-list {
+  margin-top: 15px;
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #555;
+}
+
+.fade-in { animation: fadeIn 1.2s ease forwards; }
+.fade-up { animation: fadeUp 1s ease forwards; }
+
+@keyframes fadeIn { from {opacity: 0;transform: scale(0.98);} to {opacity: 1;transform: scale(1);} }
+@keyframes fadeUp { from {opacity: 0;transform: translateY(20px);} to {opacity: 1;transform: translateY(0);} }
+@keyframes fadeDown { from {opacity: 0;transform: translateY(-20px);} to {opacity: 1;transform: translateY(0);} }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨ Grammar & Spell Checker (spaCy)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="background-glow"></div>
+  <div class="container fade-in">
+    <h1 class="app-title">✨ Grammar & Spell Checker (spaCy)</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="form-section">
+      <label for="text_input">📝 Enter your text or upload a file:</label>
+      <textarea name="text_input" id="text_input" placeholder="Type or paste your text here...">{{ original_text }}</textarea>
+
+      <div class="file-upload">
+        <input type="file" name="file_input" id="file_input" accept=".txt">
+      </div>
+
+      <button type="submit" class="btn">Check Grammar</button>
+    </form>
+
+    {% if corrected_spelling %}
+    <div class="card fade-up">
+      <h2>✅ Spelling Correction</h2>
+      <div class="result-box">
+        <p id="spell_text">{{ corrected_spelling }}</p>
+        <button class="copy-btn" onclick="copyToClipboard('spell_text')">📋 Copy</button>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if grammar_result %}
+    <div class="card fade-up">
+      <h2>✅ Grammar Correction</h2>
+      <div class="result-box">
+        <p id="grammar_text">{{ grammar_result.corrected_text }}</p>
+        <button class="copy-btn" onclick="copyToClipboard('grammar_text')">📋 Copy</button>
+      </div>
+      <p><strong>Mistakes Found:</strong> {{ grammar_result.count }}</p>
+      <ul class="mistake-list">
+        {% for mistake in grammar_result.mistakes %}
+        <li>
+          <strong>{{ mistake.rule }}</strong>: {{ mistake.message }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
+  <script>
+    function copyToClipboard(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text);
+      alert("✅ Copied to clipboard!");
+    }
+  </script>
+</body>
+</html>
